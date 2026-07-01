@@ -1,8 +1,42 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-canvas: #F6F7FB;
+  --color-surface: #FFFFFF;
+  --color-border: #E9EBF0;
+  --color-border-strong: #D8DBE3;
+
+  --color-text-primary: #14161A;
+  --color-text-secondary: #6B7280;
+  --color-text-tertiary: #9CA3AF;
+
+  --color-primary: #4361EE;
+  --color-primary-hover: #364FC7;
+  --color-primary-tint: #EEF1FF;
+
+  --color-success: #16A34A;
+  --color-success-tint: #E7F8ED;
+  --color-danger: #EF4444;
+  --color-danger-tint: #FDE8EA;
+  --color-warning: #F59E0B;
+  --color-warning-tint: #FEF3DA;
+  --color-info: #3B82F6;
+  --color-info-tint: #E8F1FF;
+
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 20px rgba(16, 24, 40, 0.06);
+  --shadow-popover: 0 4px 6px rgba(16, 24, 40, 0.05), 0 20px 40px rgba(16, 24, 40, 0.12);
+}
+
 body {
-    margin: 0;
-    background-color: #030712;
-    color: #f8fafc;
-    font-family: Inter, system-ui, -apple-system, sans-serif;
+  margin: 0;
+  background-color: var(--color-canvas);
+  color: var(--color-text-primary);
+  font-family: "Inter", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }

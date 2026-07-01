@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './layouts/Header';
 import Sidebar from './layouts/Sidebar';
 import Footer from './layouts/Footer';
@@ -16,6 +16,19 @@ import Documentation from './pages/Documentation';
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [activeTab, setActiveTab] = useState('Overview');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const renderActivePage = () => {
     switch (activeTab) {
@@ -45,15 +58,16 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[#030712] overflow-hidden text-slate-100 font-sans antialiased">
+    <div className="flex flex-col h-screen bg-canvas overflow-hidden text-text-primary font-sans antialiased">
       <Header toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar 
           isOpen={isSidebarOpen} 
           activeTab={activeTab} 
           onSelectTab={setActiveTab} 
+          onClose={() => setIsSidebarOpen(false)}
         />
-        <main className="flex-1 overflow-y-auto bg-[#030712]">
+        <main className="flex-1 overflow-y-auto bg-canvas">
           {renderActivePage()}
         </main>
       </div>
